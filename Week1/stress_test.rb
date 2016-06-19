@@ -78,7 +78,16 @@ def main
 	# 		p 'OK'
 	# 	end
 	# end
+
+
 	n = gets.chomp.to_i
-	arr = []
+
+	stringValues = gets.chomp.split(' ')
+
+	intValues = []
+	stringValues.map{|v| intValues.push(Integer(v, 10)) }
+
+	p maxPairwiseFast intValues
 end
+
 main()
