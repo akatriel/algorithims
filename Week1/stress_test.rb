@@ -56,38 +56,40 @@ def maxPairwiseFast nums
 end
 
 def main 
-	# while true
-	# 	n = rand(2..1000)
-	# 	str = ''
-	# 	p n
-	# 	arr = []
-	# 	for i in 0...n
-	# 		arr.push rand(0..100000)
-	# 	end
-	# 	for i in 0...n
-	# 		str << arr[i].to_s << " "
-	# 	end
-	# 	p str
-	# 	result1 = maxPairwise arr	
-	# 	result2 = maxPairwiseFast arr
+	while true
+		n = rand(2..1000)
+		str = ''
+		p n
+		arr = []
+		for i in 0...n
+			arr.push rand(0..100000)
+		end
+		for i in 0...n
+			str << arr[i].to_s << " "
+		end
+		p str
+		result1 = maxPairwise arr	
+		result2 = maxPairwiseFast arr
 
-	# 	if result2 != result1
-	# 		p "Wrong answer: " << result1.to_s << " " << result2.to_s
-	# 		break
-	# 	else
-	# 		p 'OK'
-	# 	end
-	# end
+		if result2 != result1
+			p "Wrong answer: " << result1.to_s << " " << result2.to_s
+			break
+		else
+			p 'OK'
+		end
+	end
+
+	#TODO need to figure out if two of same number are valid as product if they are highest in set.
 
 
-	n = gets.chomp.to_i
+	# n = gets.chomp.to_i
 
-	stringValues = gets.chomp.split(' ')
+	# stringValues = gets.chomp.split(' ')
 
-	intValues = []
-	stringValues.map{|v| intValues.push(Integer(v, 10)) }
+	# intValues = []
+	# stringValues.map{|v| intValues.push(Integer(v, 10)) }
 
-	p maxPairwiseFast intValues
+	# p maxPairwiseFast intValues
 end
 
 main()
