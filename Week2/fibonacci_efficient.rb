@@ -1,3 +1,4 @@
+# require 'benchmark'
 def fibList n
 	arr = *(0...n)
 	arr[0] = 0
@@ -9,5 +10,5 @@ def fibList n
 end
 
 n = gets.chomp.to_i
-
 p fibList n
+# p Benchmark.measure{p fibList n}
