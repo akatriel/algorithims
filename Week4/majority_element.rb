@@ -1,11 +1,25 @@
 def majorityElement n, arr
-	arr.each do |i|
-		unless arr.count(i) > (n / 2)
-			return 0
-		else 
-			return 1
+	majorityElem = -1
+	count = 0
+	for i in 0..n
+
+		if count == 0
+			majorityElem = arr[i]
+		end
+
+		if arr[i] == majorityElem
+			count += 1
+		else
+			count -= 1
 		end
 	end
+	count = 0 
+	for i in 0..n
+		if arr[i] == majorityElem
+			count += 1
+		end
+	end
+	count > (n / 2) ? 1 : 0
 end
 
 input = []
