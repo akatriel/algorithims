@@ -1,15 +1,19 @@
 def knapsack n, capacity, bars
+	if bars.length == 0 || bars[0].nil? || capacity == 0
+		return 0
+	end
 	solutions = []
 	# Compare each bar with another and the addition of the two is stored. the max is the solution
 	(bars.length - 1).downto 0 do |i|
-		bars.each do |x| 
+		bars.each_with_index do |x, j| 
 			if x + bars[i] <= capacity
-				solutions << x + bars[i] unless x == bars[i]
+				solutions << x + bars[i] unless j == i
 			end
 		end
 	end
 	solutions.max
 end
+
 
 input = []
 ARGF.each_line do |line|
