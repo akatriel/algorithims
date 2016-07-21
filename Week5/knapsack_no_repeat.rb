@@ -1,18 +1,21 @@
-def knapsack n, capacity, bars
-	if bars.length == 0 || bars[0].nil? || capacity == 0
+def knapsack(capacity, bars)
+	if capacity == 0 || bars.nil? || bars[0].nil?
 		return 0
 	end
+
 	solutions = []
-	# Compare each bar with another and the addition of the two is stored. the max is the solution
-	(bars.length - 1).downto 0 do |i|
-		bars.each_with_index do |x, j| 
-			if x + bars[i] <= capacity
-				solutions << x + bars[i] unless j == i
-			end
+	sum = 0
+	(1..capacity).each do |i|
+		break if sum > capacity
+		bars.combination(i).lazy.each do |comb|
+			sum = comb.reduce(&:+)
+			solutions << sum
 		end
 	end
-	solutions.max
+
+	solutions.select{|i| i <= capacity}.max
 end
+
 
 
 input = []
@@ -21,8 +24,7 @@ ARGF.each_line do |line|
 	input << line.split(' ').map{ |i| i.to_i }
 end
 
-n = input[0][1]
 capacity = input[0][0]
 bars = input[1]
 
-p knapsack n, capacity, bars
+p knapsack capacity, bars
